@@ -7,9 +7,9 @@ const HeroSection = styled.section`
   align-items: center;
   text-align: center;
   padding: 2em;
-  background-image: url('/path-to-your-image.jpg');
+  background-image: url('src/images/hero_image.jpg');
   background-size: cover;
-  color: white;
+  color: black;
 
   @media (max-width: 768px) {
     height: 50vh;

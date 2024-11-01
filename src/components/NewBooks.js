@@ -18,9 +18,9 @@ const NewBooks = () => (
   <section>
     <h2>New Books</h2>
     <BookGrid>
-      <Book><img src="book1.jpg" alt="Book 1" /></Book>
-      <Book><img src="book2.jpg" alt="Book 2" /></Book>
-      <Book><img src="book3.jpg" alt="Book 3" /></Book>
+      <Book><img src="./src/images/book1.jpg" alt="Book 1" /></Book>
+      <Book><img src="./src/images/book2.jpg" alt="Book 2" /></Book>
+      <Book><img src="./src/images/book3.jpg" alt="Book 3" /></Book>
     </BookGrid>
   </section>
 );
