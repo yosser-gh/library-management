@@ -7,7 +7,7 @@ const HeroSection = styled.section`
   align-items: center;
   text-align: center;
   padding: 2em;
-  background-image: url('src/images/hero_image.jpg');
+  background-image: url('../images/hero_image.jpg');
   background-size: cover;
   color: black;
 

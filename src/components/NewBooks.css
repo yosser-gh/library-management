@@ -1,0 +1,57 @@
+/* Basic styling for the section */
+.new-books {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .new-books h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Container for the grid */
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 1em;
+  padding: 1.5em;
+}
+  
+  /* Book styling */
+  .book {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1px ;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.511);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .book img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .book h5 {
+    text-align: center;
+    font-size: larger;
+    color: black;
+  }
+  
+  
+  
+  .book:hover img {
+    transform: scale(1.04); /* Adds a slight zoom effect on the image */
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    .new-books h2 {
+      font-size: 1.5em;
+    }
+  }
+
+

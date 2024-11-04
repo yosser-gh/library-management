@@ -1,5 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import book1 from '../images/book1.jpg';
+import book2 from '../images/book2.jpg';
+import book3 from '../images/book3.jpg';
+import './NewBooks.css';
 
 const BookGrid = styled.div`
   display: grid;
@@ -15,13 +19,16 @@ const Book = styled.div`
 `;
 
 const NewBooks = () => (
-  <section>
+  <section className="new-books">
     <h2>New Books</h2>
-    <BookGrid>
-      <Book><img src="./src/images/book1.jpg" alt="Book 1" /></Book>
-      <Book><img src="./src/images/book2.jpg" alt="Book 2" /></Book>
-      <Book><img src="./src/images/book3.jpg" alt="Book 3" /></Book>
-    </BookGrid>
+    <div className="book-grid">
+      <div className="book"><img src={book1} alt="Book 1" /> <h5>book1</h5> </div>
+      <div className="book"><img src={book2} alt="Book 2" /> <h5>book1</h5></div>
+      <div className="book"><img src={book3} alt="Book 3" /><h5>book1</h5></div>
+      <div className="book"><img src={book1} alt="Book 1" /><h5>book1</h5></div>
+      <div className="book"><img src={book2} alt="Book 2" /><h5>book1</h5></div>
+      <div className="book"><img src={book3} alt="Book 3" /><h5>book1</h5></div>
+    </div>
   </section>
 );
 
