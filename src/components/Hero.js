@@ -1,28 +1,26 @@
 import React from "react";
-import styled from "styled-components";
+import hero from '../images/hero_image.jpg';
+import "./Hero.css";
 
-const HeroSection = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 2em;
-  background-image: url('../images/hero_image.jpg');
-  background-size: cover;
-  color: black;
-
-  @media (max-width: 768px) {
-    height: 50vh;
-    padding: 1em;
-  }
-`;
-
-
-const Hero = () => (
-  <HeroSection>
-    <h1>Your Home for Books</h1>
-    <p>Discover, explore, and loan books at the City Central Library.</p>
-  </HeroSection>
-);
+const Hero = () => {
+  return (
+    <div className="hero-container">
+      <div className="hero-content">
+        <h2>“A room without books is like a body without a soul.”</h2>
+        <p>
+          Dive into the world of stories, knowledge, and inspiration.
+          Let your next chapter begin here.
+        </p>
+        <div className="hero-buttons">
+          <a href="/explore" className="cta-primary">Explore Now</a>
+          <a href="/about" className="cta-secondary">Learn More</a>
+        </div>
+      </div>
+      <div className="hero-image">
+        <img src={hero} alt="Bookshelf with books" />
+      </div>
+    </div>
+  );
+};
 
 export default Hero;

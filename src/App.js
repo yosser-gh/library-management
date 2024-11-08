@@ -1,5 +1,7 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { ThemeProvider } from "styled-components";
+import GlobalStyles from "./styles/GlobalStyles";
+import theme from "./styles/Theme";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Spotlight from "./components/SpotLight";
@@ -8,15 +10,14 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <Router>
-      <div>
+    <ThemeProvider theme={theme}>
+        <GlobalStyles />
         <Header />
         <Hero />
         <Spotlight />
         <NewBooks />
         <Footer />
-      </div>
-    </Router>
+    </ThemeProvider>
   );
 }
 

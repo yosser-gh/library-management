@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+/* Main container */
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2em;
+  height: 80vh; /* Full viewport height minus header */
+  background-color: #ffffff; /* Neutral background */
+  gap: 2em;
+  margin-top: 5%;
+}
+
+/* Content on the left */
+.hero-content {
+  flex: 1;
+  max-width: 50%;
+  text-align: left;
+}
+
+.hero-content h2 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 4.5rem;
+  font-weight: 400;
+  color: #000000;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.hero-content p {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2em;
+  color: #000000;
+  margin-top: 4em;
+  margin-bottom: 2em ;
+  max-width: 70%;
+}
+
+
+
+.hero-buttons {
+  display: flex;
+  gap: 1em;
+}
+
+.hero-buttons a {
+  padding: 0.8em 1.5em;
+  font-size: 1em;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.hero-buttons .cta-primary {
+  background-color: #f5c518; /* Primary button */
+}
+
+.hero-buttons .cta-primary:hover {
+  background-color: #e0ae00;
+}
+
+.hero-buttons .cta-secondary {
+  background-color: #555; /* Secondary button */
+}
+
+.hero-buttons .cta-secondary:hover {
+  background-color: #333;
+}
+
+/* Image on the right */
+.hero-image {
+  flex: 1;
+  max-width: 40%;
+}
+
+.hero-image img {
+  width:100%;
+  height: auto;
+  
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+    height: auto;
+    gap: 1.5em;
+    margin-top: 10%;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-image {
+    max-width: 100%;
+  }
+
+  
+}
+
+@media (max-width: 768px) {
+  .hero-content h2 {
+    font-size: 2em;
+  }
+
+  .hero-content p {
+    font-size: 1em;
+  }
+
+  .hero-buttons a {
+    font-size: 0.9em;
+  }
+}
+
