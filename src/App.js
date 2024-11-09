@@ -8,6 +8,7 @@ import Spotlight from "./components/SpotLight";
 import NewBooks from "./components/NewBooks";
 import Footer from "./components/Footer";
 
+
 function App() {
   return (
     <ThemeProvider theme={theme}>
