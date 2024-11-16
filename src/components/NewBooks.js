@@ -1,23 +1,36 @@
-import React from "react";
-import book1 from '../images/book1.jpg';
-import book2 from '../images/book2.jpg';
-import book3 from '../images/book3.jpg';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import './NewBooks.css';
 
+function NewBooks() {
+  const [books, setBooks] = useState([]);
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    fetch('http://localhost:5000/api/books')
+      .then(response => response.json())
+      .then(data => setBooks(data))
+      .catch(error => console.error('Error fetching books:', error));
+  }, []);
 
-const NewBooks = () => (
-  <section className="new-books">
-    <h2>New Books</h2>
-    <div className="book-grid">
-      <div className="book"><img src={book1} alt="Book 1" /> <h5>book1</h5> </div>
-      <div className="book"><img src={book2} alt="Book 2" /> <h5>book1</h5></div>
-      <div className="book"><img src={book3} alt="Book 3" /><h5>book1</h5></div>
-      <div className="book"><img src={book1} alt="Book 1" /><h5>book1</h5></div>
-      <div className="book"><img src={book2} alt="Book 2" /><h5>book1</h5></div>
-      <div className="book"><img src={book3} alt="Book 3" /><h5>book1</h5></div>
+  const handleBookClick = (id) => {
+    navigate(`/book/${id}`);
+  };
+
+  return (
+    <div className="new-book-section">
+      <h2>Recent Books</h2>
+      <div className="book-slider">
+        {books.map((book) => (
+          <div className="book-card" key={book.ISBN} onClick={() => handleBookClick(book._id)}>
+            <img src={book["Image-URL-M"]} alt={book.Title} className="book-image" />
+            <h3 className="book-title">{book.Title}</h3>
+            <p className="book-author">{book.Authors}</p>
+          </div>
+        ))}
+      </div>
     </div>
-  </section>
-);
+  );
+}
 
 export default NewBooks;
