@@ -1,0 +1,137 @@
+/* EventDetails.css */
+
+/* Main container */
+.event-details-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+    font-family: "Arial", sans-serif;
+    color: #333;
+    margin-top: 10%;
+  }
+  
+  /* Event Image */
+  .event-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  /* Event Content */
+  .event-content {
+    text-align: center;
+  }
+  
+  .event-content h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .event-date {
+    color: #777;
+    margin-bottom: 20px;
+  }
+  
+  .event-description {
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    text-align: left;
+  }
+  
+  /* Buttons */
+  .buttons {
+    display: flex;
+    justify-content: center;
+    margin: 5% auto;
+    gap: 50%;
+  }
+  
+  .back-btn,
+  .register-btn {
+    padding: 0.8em 2.5em;
+    font-size: 1em;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .back-btn {
+    background-color: #ffffff;
+    border: solid #f5c518;
+    color: #000000;
+  }
+  
+  .register-btn {
+    background-color: #f5c518;
+    border: none;
+  }
+  
+  /* Modal Overlay */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .modal-content h2 {
+    margin-bottom: 20px;
+  }
+  
+  .modal-content form label {
+    display: block;
+    margin: 10px 0;
+    text-align: left;
+  }
+  
+  .modal-content form input,
+  .modal-content form textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .modal-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .cancel-btn,
+  .submit-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .cancel-btn {
+    background-color: #1b1b1b;
+    color: #fff;
+  }
+  
+  .submit-btn {
+    background-color: #1b1b1b;
+    color: #fff;
+  }
+  
