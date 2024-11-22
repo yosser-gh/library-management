@@ -4,10 +4,14 @@ import { ThemeProvider } from "styled-components";
 import GlobalStyles from "./styles/GlobalStyles";
 import theme from "./styles/Theme";
 import Header from "./components/Header";
-import Hero from "./components/Hero";
-import Spotlight from "./components/SpotLight";
-import NewBooks from "./components/NewBooks";
 import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import Books from "./pages/Books";
+import Events from "./pages/Events";
+import About from "./pages/About";
+import Profile from "./pages/Profile";
+import EventDetails from "./components/EventDetails";
+
 
 function App() {
   return (
@@ -15,14 +19,14 @@ function App() {
       <GlobalStyles />
       <Router>
         <Header />
-        <Hero />
-        <Spotlight />
-
-        {/* Define the route for NewBooks */}
         <Routes>
-          <Route path="/" element={<NewBooks />} />
+          <Route path="/" element={<Home />} /> 
+          <Route path="/books" element={<Books />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/events/:id" element={<EventDetails />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/Profile" element={<Profile />} />
         </Routes>
-
         <Footer />
       </Router>
     </ThemeProvider>
