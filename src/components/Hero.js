@@ -12,7 +12,7 @@ const Hero = () => {
           Let your next chapter begin here.
         </p>
         <div className="hero-buttons">
-          <a href="/explore" className="cta-primary">Explore Now</a>
+          <a href="/books" className="cta-primary">Explore Now</a>
           <a href="/about" className="cta-secondary">Learn More</a>
         </div>
       </div>

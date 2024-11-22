@@ -3,6 +3,8 @@
 .new-book-section {
   padding: 2rem;
   background-color: #fafaf8; 
+  margin-bottom: 5rem;
+  margin-top: 5rem;
 }
 
 .new-book-section h2 {

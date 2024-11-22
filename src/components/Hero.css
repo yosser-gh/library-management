@@ -9,7 +9,7 @@
   height: 80vh; /* Full viewport height minus header */
   background-color: #ffffff; /* Neutral background */
   gap: 2em;
-  margin-top: 6%;
+  margin-top: 5%;
 }
 
 /* Content on the left */
@@ -80,10 +80,9 @@
   
 }
 
-/* Responsiveness */
+
 @media (max-width: 1024px) {
   .hero-container {
-    flex-direction: column;
     text-align: center;
     height: auto;
     gap: 1.5em;
@@ -91,11 +90,11 @@
   }
 
   .hero-content {
-    max-width: 100%;
+    max-width: 50%;
   }
 
   .hero-image {
-    max-width: 100%;
+    max-width: 50%;
   }
 
   
