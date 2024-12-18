@@ -1,73 +1,49 @@
-import React, { useState } from 'react';
-import './Profile.css'; 
+import React, { useState, useEffect } from "react";
+import "./Profile.css";
 
 const Profile = () => {
-  const [activeTab, setActiveTab] = useState('account');
+  const [activeTab, setActiveTab] = useState("account");
+  const [profileData, setProfileData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const userData = {
-    name: 'Alex Johnson',
-    email: 'alex.johnson@example.com',
-    memberSince: 'January 2023',
-    avatar: 'https://via.placeholder.com/120'
-  };
+  useEffect(() => {
+    const fetchProfileData = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/user/profile", {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+        if (!response.ok) throw new Error("Failed to fetch profile data.");
+        const data = await response.json();
+        setProfileData(data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching profile data:", error);
+      }
+    };
 
-  const registeredEvents = [
-    { 
-      id: 1, 
-      name: 'Summer Reading Challenge', 
-      date: 'August 15, 2024', 
-      location: 'City Library'
-    },
-    { 
-      id: 2, 
-      name: 'Author Meet & Greet', 
-      date: 'September 5, 2024', 
-      location: 'Community Center'
-    }
-  ];
+    fetchProfileData();
+  }, []);
 
-  const loanedBooks = [
-    { 
-      id: 1, 
-      title: 'The Midnight Library', 
-      author: 'Matt Haig', 
-      dueDate: 'July 20, 2024'
-    },
-    { 
-      id: 2, 
-      title: 'Atomic Habits', 
-      author: 'James Clear', 
-      dueDate: 'August 1, 2024'
-    }
-  ];
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-  const recommendedBooks = [
-    { 
-      id: 1, 
-      title: 'Project Hail Mary', 
-      author: 'Andy Weir', 
-      coverImage: 'https://via.placeholder.com/150x250'
-    },
-    { 
-      id: 2, 
-      title: 'Sapiens', 
-      author: 'Yuval Noah Harari', 
-      coverImage: 'https://via.placeholder.com/150x250'
-    }
-  ];
+  if (!profileData) {
+    return <div>Error loading profile data.</div>;
+  }
+
+  const { user, registeredEvents, loanedBooks } = profileData;
 
   const renderAccountDetails = () => (
     <div className="content-section">
       <div className="profile-header">
-        <img 
-          src={userData.avatar} 
-          alt="Profile" 
-          className="profile-avatar"
-        />
+        <img src={user.avatar} alt="Profile" className="profile-avatar" />
         <div className="profile-info">
-          <h2>{userData.name}</h2>
-          <p>{userData.email}</p>
-          <p>Member since {userData.memberSince}</p>
+          <h2>{user.name}</h2>
+          <p>{user.email}</p>
+          <p>Member since {new Date(user.memberSince).toLocaleDateString()}</p>
         </div>
       </div>
       <div className="profile-buttons">
@@ -80,11 +56,11 @@ const Profile = () => {
   const renderRegisteredEvents = () => (
     <div className="content-section">
       <h3>Registered Events</h3>
-      {registeredEvents.map(event => (
-        <div key={event.id} className="event-item">
+      {registeredEvents.map((event) => (
+        <div key={event._id} className="event-item">
           <div>
             <h4>{event.name}</h4>
-            <p>{event.date}</p>
+            <p>{new Date(event.date).toLocaleDateString()}</p>
           </div>
           <span>{event.location}</span>
         </div>
@@ -95,32 +71,18 @@ const Profile = () => {
   const renderLoanedBooks = () => (
     <div className="content-section">
       <h3>Loaned Books</h3>
-      {loanedBooks.map(book => (
-        <div key={book.id} className="book-item">
+      {loanedBooks.map((book) => (
+        <div key={book._id} className="book-item">
           <div>
             <h4>{book.title}</h4>
             <p>{book.author}</p>
           </div>
-          <span>Due: {book.dueDate}</span>
+          <span>Due: {new Date(book.dueDate).toLocaleDateString()}</span>
         </div>
       ))}
     </div>
   );
 
-  const renderRecommendedBooks = () => (
-    <div className="content-section">
-      <h3>Recommended Books</h3>
-      <div className="recommended-books">
-        {recommendedBooks.map(book => (
-          <div key={book.id} className="book-card">
-            <img src={book.coverImage} alt={book.title} />
-            <h4>{book.title}</h4>
-            <p>{book.author}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
 
   const renderSettings = () => (
     <div className="content-section">
@@ -147,7 +109,6 @@ const Profile = () => {
       case 'account': return renderAccountDetails();
       case 'events': return renderRegisteredEvents();
       case 'books': return renderLoanedBooks();
-      case 'recommended': return renderRecommendedBooks();
       case 'settings': return renderSettings();
       default: return renderAccountDetails();
     }

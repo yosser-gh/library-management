@@ -1,7 +1,13 @@
+require('dotenv').config();
 const express = require('express');
 const connectDB = require('./db');
+const { router: authRoutes } = require("./routes/auth");
+const adminRoutes = require("./routes/admin");
+const userRoutes = require("./routes/user");
 const bookRoutes = require('./routes/bookRoutes');
+const eventRoutes = require("./routes/eventRoutes");
 const path = require('path');
+
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -16,7 +22,13 @@ app.use(express.json());
 
 // API Routes
 app.use('/api', bookRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/admin", adminRoutes);
+app.use("/api/user", userRoutes);
+app.use("/api", eventRoutes);
 
+// Serve static files from the images folder
+app.use('/images', express.static(path.join(__dirname, '../images')));
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, '../../public')));

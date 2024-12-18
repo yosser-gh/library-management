@@ -1,50 +1,39 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import club from '../images/book-club-image.jpg';
-import poetry from '../images/poetry.jpg';
-import BOM from '../images/books-of-the-month.jpg';
 import './Spotlight.css';
 
 const Spotlight = () => {
-  const spotlightEvents = [
-    {
-      id: 1,
-      title: "Join the CCL Book Club Now!",
-      date: "December 1, 2024",
-      description: "A monthly gathering to discuss our favorite books.",
-      image: club,
-    },
-    {
-      id: 2,
-      title: "Poetry Competition Starting Soon",
-      date: "December 10, 2024",
-      description: "Showcase your talent in our annual poetry competition.",
-      image: poetry,
-    },
-    {
-        id: 3,
-        title: "Our readers' Book of the Month",
-        date: "December 25, 2024",
-        description: "A monthly gathering to discuss our favorite books.",
-        image: BOM,
-      },
-  ];
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/events");
+        const data = await response.json();
+        setEvents(data);
+      } catch (error) {
+        console.error("Error fetching events:", error);
+      }
+    };
+
+    fetchEvents();
+  }, []);
 
   return (
     <section className="SpotlightContainer">
       <h2>Spotlight</h2>
       <div className="SpotlightItems">
-        {spotlightEvents.map((event) => (
-          <div className="SpotlightCard" key={event.id}>
-            <img src={event.image} alt={event.title} />
+        {events.slice(0, 3).map((event) => (
+          <div className="SpotlightCard" key={event._id}>
+            <img src={`http://localhost:5000${event.image}` || "https://via.placeholder.com/300"} alt={event.name} />
             <div className="event-details">
-                <h3>{event.title}</h3>
-                <p>{event.date}</p>
-                <p>{event.description}</p>
-                <Link to={`/events/${event.id}`}>
-                  <button className="Button">Read More..</button>
-                </Link>
-              </div>
+              <h3>{event.name}</h3>
+              <p>{new Date(event.date).toLocaleDateString()}</p>
+              <p>{event.description.slice(0, 100)}...</p>
+              <Link to={`/events/${event._id}`}>
+                <button className="Button">Read More..</button>
+              </Link>
+            </div>
           </div>
         ))}
       </div>

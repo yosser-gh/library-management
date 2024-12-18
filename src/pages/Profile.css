@@ -49,8 +49,8 @@ body {
 
 .sidebar-nav button:hover,
 .sidebar-nav button.active {
-    background-color: #e6f2ff;
-    color: #007bff;
+    background-color: #f0ead6;
+    color: #f5c518;
 }
 
 /* Main Content Styles */
@@ -79,7 +79,7 @@ body {
     height: 120px;
     border-radius: 50%;
     object-fit: cover;
-    border: 4px solid #007bff;
+    border: 4px solid #f5c518;
 }
 
 .profile-info h2 {
@@ -107,8 +107,8 @@ body {
 }
 
 .btn-edit {
-    background-color: #e6f2ff;
-    color: #007bff;
+    background-color: #f0ead6;
+    color: #f5c518;
 }
 
 .btn-logout {
@@ -190,7 +190,7 @@ body {
 }
 
 input:checked + .toggle-slider {
-    background-color: #2196F3;
+    background-color: #f5c518a4;
 }
 
 input:checked + .toggle-slider:before {

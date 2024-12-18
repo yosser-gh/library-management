@@ -45,7 +45,6 @@ const About = () => {
 
         <section className="about-section">
           <div className="section-icon">
-            <FaUserGraduate size={40} color="#007bff" />
             <FaLaptop size={40} color="#007bff" />
           </div>
           <div className="section-content">
