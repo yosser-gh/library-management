@@ -15,6 +15,7 @@ import Events from "./pages/Events";
 import About from "./pages/About";
 import Profile from "./pages/Profile";
 import EventDetails from "./components/EventDetails";
+import BookDetails from "./pages/BookDetails";
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} /> 
           <Route path="/books" element={<Books />} />
+          <Route path="/book/:isbn" element={<BookDetails />} />
           <Route path="/events" element={<Events />} />
           <Route path="/events/:id" element={<EventDetails />} />
           <Route path="/about" element={<About />} />

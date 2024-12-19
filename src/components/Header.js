@@ -1,17 +1,8 @@
 import React from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import './Header.css';
 
 const Header = ({ user, setUser }) => {
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    // Clear user state and token
-    setUser(null);
-    localStorage.removeItem("token");
-    navigate("/login");
-  };
-
   return (
     <div className="header-container">
       <h1 className="header-logo">
@@ -35,7 +26,6 @@ const Header = ({ user, setUser }) => {
         ) : user.role === "admin" ? (
           <>
             <li><Link to="/admin-dashboard">Admin Dashboard</Link></li>
-            <li><button onClick={handleLogout}>Logout</button></li>
           </>
         ) : (
           <>
@@ -43,7 +33,6 @@ const Header = ({ user, setUser }) => {
             <li><Link to="/events">Events</Link></li>
             <li><Link to="/about">About</Link></li>
             <li><Link to="/profile">Profile</Link></li>
-            <li><button onClick={handleLogout}>Logout</button></li>
           </>
         )}
       </ul>

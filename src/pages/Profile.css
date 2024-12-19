@@ -212,3 +212,73 @@ input:checked + .toggle-slider:before {
         overflow-x: auto;
     }
 }
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+}
+
+.edit-form input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.edit-form input:focus {
+    outline: none;
+    border-color: #f5c518;
+}
+
+.overdue {
+    color: #ff4444;
+    font-weight: bold;
+}
+
+/* Optional: Add animation for tab transitions */
+.content-section {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Add these to your existing Profile.css */
+
+.btn-remove {
+    background-color: #ffe6e6;
+    color: #ff4444;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-remove:hover {
+    background-color: #ffcccc;
+}
+
+.book-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+.event-item, .book-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #f1f1f1;
+    margin: 5%;
+}
+
+.event-item:last-child,
+.book-item:last-child {
+    border-bottom: none;
+}
