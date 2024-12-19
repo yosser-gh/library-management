@@ -6,6 +6,7 @@ const adminRoutes = require("./routes/admin");
 const userRoutes = require("./routes/user");
 const bookRoutes = require('./routes/bookRoutes');
 const eventRoutes = require("./routes/eventRoutes");
+const registeredEventRoutes = require("./routes/registerEvent");
 const path = require('path');
 
 
@@ -26,6 +27,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api", eventRoutes);
+app.use("/api", registeredEventRoutes)
 
 // Serve static files from the images folder
 app.use('/images', express.static(path.join(__dirname, '../images')));

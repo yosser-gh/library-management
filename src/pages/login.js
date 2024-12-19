@@ -1,11 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./auth.css"
+import "./auth.css";
 
 const Login = ({ setUser }) => {
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Redirect if user is already logged in
+    const token = localStorage.getItem("token");
+    const role = localStorage.getItem("role");
+    if (token && role) {
+      navigate(role === "admin" ? "/admin-dashboard" : "/");
+    }
+  }, [navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,13 +32,21 @@ const Login = ({ setUser }) => {
 
       if (response.ok) {
         const { token, role } = await response.json();
-        localStorage.setItem("token", token); // Save token
-        setUser({ username: formData.username, role }); // Update user state
+        // Save token and role in localStorage
+        localStorage.setItem("token", token);
+        localStorage.setItem("role", role);
+
+        // Update user state
+        setUser({ username: formData.username, role });
+
+        // Navigate to the respective dashboard
         navigate(role === "admin" ? "/admin-dashboard" : "/");
       } else {
-        setError("Invalid username or password.");
+        const { message } = await response.json();
+        setError(message || "Invalid username or password.");
       }
-    } catch {
+    } catch (err) {
+      console.error("Error during login:", err);
       setError("Server error. Please try again later.");
     }
   };
