@@ -12,7 +12,7 @@ const Login = ({ setUser }) => {
     const token = localStorage.getItem("token");
     const role = localStorage.getItem("role");
     if (token && role) {
-      navigate(role === "admin" ? "/admin-dashboard" : "/");
+      navigate(role === "admin" ? "/dashboard" : "/");
     }
   }, [navigate]);
 
@@ -40,7 +40,7 @@ const Login = ({ setUser }) => {
         setUser({ username: formData.username, role });
 
         // Navigate to the respective dashboard
-        navigate(role === "admin" ? "/admin-dashboard" : "/");
+        navigate(role === "admin" ? "/dashboard" : "/");
       } else {
         const { message } = await response.json();
         setError(message || "Invalid username or password.");

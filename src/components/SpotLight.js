@@ -23,7 +23,7 @@ const Spotlight = () => {
     <section className="SpotlightContainer">
       <h2>Spotlight</h2>
       <div className="SpotlightItems">
-        {events.slice(0, 3).map((event) => (
+        {events.slice(0, 4).map((event) => (
           <div className="SpotlightCard" key={event._id}>
             <img src={`http://localhost:5000${event.image}` || "https://via.placeholder.com/300"} alt={event.name} />
             <div className="event-details">

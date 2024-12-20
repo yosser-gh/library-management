@@ -2,6 +2,11 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import './Header.css';
 
+const handleLogout = () => {
+  localStorage.removeItem("token");
+  window.location.href = "/login";
+};
+
 const Header = ({ user, setUser }) => {
   return (
     <div className="header-container">
@@ -25,7 +30,8 @@ const Header = ({ user, setUser }) => {
           </>
         ) : user.role === "admin" ? (
           <>
-            <li><Link to="/admin-dashboard">Admin Dashboard</Link></li>
+            <li><Link to="/dashboard">Admin Dashboard</Link></li>
+            <li><button  onClick={handleLogout}>Logout</button></li>
           </>
         ) : (
           <>
